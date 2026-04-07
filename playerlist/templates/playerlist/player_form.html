@@ -1,0 +1,10 @@
+{% extends "playerlist/base.html" %}
+{% block content %}
+  <h2>{% if object %}Edit{% else %}Add{% endif %} Player</h2>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <a href="{% url 'playerlist:list' %}">Cancel</a>
+{% endblock %}
+

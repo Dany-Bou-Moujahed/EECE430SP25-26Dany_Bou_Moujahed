@@ -1,0 +1,26 @@
+{% extends "playerlist/base.html" %}
+{% block content %}
+  <p><a href="{% url 'playerlist:add' %}">Add player</a></p>
+  <table border="1" cellspacing="0" cellpadding="4">
+    <tr>
+      <th>ID</th><th>Name</th><th>Joined</th><th>Position</th><th>Salary</th><th>Contact</th><th>Actions</th>
+    </tr>
+    {% for p in playerlist %}
+    <tr>
+      <td>{{ p.id }}</td>
+      <td><a href="{% url 'playerlist:detail' p.id %}">{{ p.name }}</a></td>
+      <td>{{ p.dateJoined }}</td>
+      <td>{{ p.get_position_display }}</td>
+      <td>{{ p.salary }}</td>
+      <td>{{ p.contactPerson }}</td>
+      <td>
+        <a href="{% url 'playerlist:edit' p.id %}">Edit</a>
+        <a href="{% url 'playerlist:delete' p.id %}">Delete</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7">No players.</td></tr>
+    {% endfor %}
+  </table>
+{% endblock %}
+

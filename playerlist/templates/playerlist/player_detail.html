@@ -1,0 +1,14 @@
+{% extends "playerlist/base.html" %}
+{% block content %}
+  <h2>{{ object.name }}</h2>
+  <ul>
+    <li><strong>ID:</strong> {{ object.id }}</li>
+    <li><strong>Date joined:</strong> {{ object.dateJoined }}</li>
+    <li><strong>Position:</strong> {{ object.get_position_display }}</li>
+    <li><strong>Salary:</strong> {{ object.salary }}</li>
+    <li><strong>Contact:</strong> {{ object.contactPerson }}</li>
+  </ul>
+  <a href="{% url 'playerlist:edit' object.id %}">Edit</a> |
+  <a href="{% url 'playerlist:list' %}">Back</a>
+{% endblock %}
+
